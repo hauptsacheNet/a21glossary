@@ -1,0 +1,9 @@
+{
+	"name": "IngoMueller/a21glossary",
+	"type": "typo3-cms-extension",
+	"description": "",
+	"homepage": "https://github.com/IngoMueller/a21glossary",
+	"license": ["GPL-2.0+"],
+	"keywords": ["TYPO3 CMS"],
+	"version": "master"
+}
