@@ -1,7 +1,7 @@
 {
 	"name": "IngoMueller/a21glossary",
 	"type": "typo3-cms-extension",
-	"description": "Creates dummy image files for sys_file records whose files went missing",
+	"description": "",
 	"homepage": "https://github.com/IngoMueller/a21glossary",
 	"license": ["GPL-2.0+"],
 	"keywords": ["TYPO3 CMS"],
