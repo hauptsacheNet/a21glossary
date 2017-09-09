@@ -4,31 +4,52 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
-$TCA['tx_a21glossary_main'] = array(
-	'ctrl' => $TCA['tx_a21glossary_main']['ctrl'],
+$GLOBALS['TCA']['tx_a21glossary_main'] = array(
+    'ctrl' => array(
+        'title' => 'LLL:EXT:a21glossary/locallang_db.xml:tx_a21glossary_main',
+        'label' => 'short',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'versioning' => '1',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l18n_parent',
+        'transOrigDiffSourceField' => 'l18n_diffsource',
+        'default_sortby' => 'ORDER BY short,uid',
+        'delete' => 'deleted',
+        'enablecolumns' => array(
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+            'fe_group' => 'fe_group'
+        ),
+        'iconfile' => 'EXT:a21glossary/icon_tx_a21glossary_main.gif',
+    ),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid,l18n_parent,l18n_diffsource,hidden,starttime,endtime,fe_group,short,shortcut,longversion,shorttype,language,description,link,exclude,force_linking,force_case,force_preservecase,force_regexp,force_global'
 	),
-	'feInterface' => $TCA['tx_a21glossary_main']['feInterface'],
+    'feInterface' => array(
+        'fe_admin_fieldList' => 'sys_language_uid, l18n_parent, l18n_diffsource, hidden, starttime, endtime, fe_group, short, shortcut, longversion, shorttype, language, description, link, exclude, force_linking, force_case, force_preservecase, force_regexp, force_global',
+    ),
 	'columns' => array(
 		'sys_language_uid' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.language',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
 			'config' => array(
 				'type' => 'select',
 				'renderType' => 'selectSingle',
 				'foreign_table' => 'sys_language',
 				'foreign_table_where' => 'ORDER BY sys_language.title',
 				'items' => array(
-					array('LLL:EXT:lang/locallang_general.xml:LGL.allLanguages',-1),
-					array('LLL:EXT:lang/locallang_general.xml:LGL.default_value',0)
+					array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages',-1),
+					array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value',0)
 				)
 			)
 		),
 		'l18n_parent' => array(
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.l18n_parent',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
 			'config' => array(
 				'type' => 'select',
 				'renderType' => 'selectSingle',
@@ -46,7 +67,7 @@ $TCA['tx_a21glossary_main'] = array(
 		),
 		'hidden' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.hidden',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
 			'config' => array(
 				'type' => 'check',
 				'default' => '0'
@@ -54,7 +75,7 @@ $TCA['tx_a21glossary_main'] = array(
 		),
 		'starttime' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.starttime',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
 			'config' => array(
 				'type' => 'input',
 				'size' => '8',
@@ -66,7 +87,7 @@ $TCA['tx_a21glossary_main'] = array(
 		),
 		'endtime' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.endtime',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
 			'config' => array(
 				'type' => 'input',
 				'size' => '8',
@@ -82,15 +103,15 @@ $TCA['tx_a21glossary_main'] = array(
 		),
 		'fe_group' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xml:LGL.fe_group',
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.fe_group',
 			'config' => array(
 				'type' => 'select',
 				'renderType' => 'selectSingle',
 				'items' => array(
 					array('', 0),
-					array('LLL:EXT:lang/locallang_general.xml:LGL.hide_at_login', -1),
-					array('LLL:EXT:lang/locallang_general.xml:LGL.any_login', -2),
-					array('LLL:EXT:lang/locallang_general.xml:LGL.usergroups', '--div--')
+					array('LLL:EXT:lang/locallang_general.xlf:LGL.hide_at_login', -1),
+					array('LLL:EXT:lang/locallang_general.xlf:LGL.any_login', -2),
+					array('LLL:EXT:lang/locallang_general.xlf:LGL.usergroups', '--div--')
 				),
 				'foreign_table' => 'fe_groups'
 			)
